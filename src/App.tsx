@@ -1,7 +1,14 @@
-import React from "react";
+import Container from "./layout/container";
+import RentalInfoPage from "./pages/rentalInfo";
 
 function App() {
-  return <div className="App">test</div>;
+  return (
+    <>
+      <Container>
+        <RentalInfoPage />
+      </Container>
+    </>
+  );
 }
 
 export default App;
