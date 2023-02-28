@@ -1,4 +1,4 @@
-import { css, CSSProperties } from "styled-components";
+import { css } from "styled-components";
 
 // type TJustifyContent =
 //   | "flex-start"

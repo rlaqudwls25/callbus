@@ -1,3 +1,17 @@
 import create from "zustand";
+import { RentalPriceType } from "../types/inputData";
 
-export const useStore = create(() => ({}));
+type RentalInfo = {
+  managePriceCheck: boolean;
+  managePriceCheckToggle: () => void;
+  rendalInfoData: RentalPriceType[];
+};
+
+export const useStore = create<RentalInfo>((set) => ({
+  managePriceCheck: false,
+  rendalInfoData: [],
+  managePriceCheckToggle: () =>
+    set((state) => ({
+      managePriceCheck: !state.managePriceCheck,
+    })),
+}));

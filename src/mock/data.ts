@@ -1,4 +1,55 @@
-export const TabType = [
+export const RentalType = [
   { id: 1, typeName: "월세" },
   { id: 2, typeName: "전세" },
+];
+
+export const RentalInfo = [
+  {
+    id: 1,
+    type: "text",
+    placeholder: "보증금",
+    value: "50",
+    unit: "만원",
+    name: "보증금",
+    min: "",
+    max: "",
+    rentalTypeCheck: ["월세", "전세"],
+    rentalManageCheck: [{ month: false, year: false }],
+  },
+  {
+    id: 2,
+    type: "text",
+    placeholder: "월 임대료",
+    value: "50",
+    unit: "만원",
+    name: "월 임대료",
+    min: "",
+    max: "",
+    rentalTypeCheck: ["월세"],
+    rentalManageCheck: [{ month: false, year: false }],
+  },
+  {
+    id: 3,
+    type: "text",
+    placeholder: "월 관리비",
+    value: "30",
+    unit: "만원",
+    name: "월 관리비",
+    min: "",
+    max: "",
+    rentalTypeCheck: ["월세", "전세"],
+    rentalManageCheck: [{ month: true, year: true }],
+  },
+  {
+    id: 4,
+    type: "number",
+    placeholder: "임대료 납부일",
+    value: 31,
+    unit: "일",
+    name: "임대료 납부일",
+    min: "1",
+    max: "31",
+    rentalTypeCheck: ["월세", "전세"],
+    rentalManageCheck: [{ month: false, year: true }],
+  },
 ];

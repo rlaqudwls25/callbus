@@ -1,11 +1,7 @@
-import RentalType from "../../components/rentalInfo/rentalType";
+import RentalCategory from "../../components/rentalInfo/RentalCategory";
 
 const RentalInfoPage = () => {
-  return (
-    <>
-      <RentalType />
-    </>
-  );
+  return <RentalCategory />;
 };
 
 export default RentalInfoPage;
