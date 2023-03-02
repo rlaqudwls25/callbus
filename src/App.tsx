@@ -1,13 +1,18 @@
 import Container from "./layout/container";
 import RentalInfoPage from "./pages/rentalInfo";
+import { Route, Routes } from "react-router-dom";
+import ResidencyInfoPage from "./pages/residencyInfo";
+import CompleteRentalPage from "./pages/completeRentalInfo";
 
 function App() {
   return (
-    <>
-      <Container>
-        <RentalInfoPage />
-      </Container>
-    </>
+    <Container>
+      <Routes>
+        <Route path="/" element={<RentalInfoPage />} />
+        <Route path="/refund" element={<ResidencyInfoPage />} />
+        <Route path="/complete" element={<CompleteRentalPage />} />
+      </Routes>
+    </Container>
   );
 }
 

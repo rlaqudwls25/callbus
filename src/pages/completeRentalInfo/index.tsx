@@ -1,5 +1,5 @@
-const CompleteRentalInfoPage = () => {
+const CompleteRentalPage = () => {
   return <div></div>;
 };
 
-export default CompleteRentalInfoPage;
+export default CompleteRentalPage;

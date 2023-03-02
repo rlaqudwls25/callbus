@@ -4,15 +4,18 @@ import App from "./App";
 import { GlobalStyles } from "./styles/globalStyles";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <GlobalStyles />
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <App />
+      </ThemeProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );

@@ -6,10 +6,12 @@ import { useStore } from "../../stores/useStore";
 import { mixin } from "../../styles/mixin";
 import { theme } from "../../styles/theme";
 import { RentalPriceType } from "../../types/inputData";
+import { useNavigate } from "react-router-dom";
 
 const RentalForm = () => {
   const [rentalList, setRentalList] = useState<RentalPriceType[]>(RentalInfo);
   const [saveRentalData, setSaveRentalData] = useState<RentalPriceType[]>([]);
+  const navigate = useNavigate();
 
   const { managePriceCheckToggle, managePriceCheck, rentalTypeName } = useStore(
     (state) => state
@@ -81,6 +83,7 @@ const RentalForm = () => {
 
   const saveRentalInfo = () => {
     setSaveRentalData(rentalList);
+    navigate("/refund");
   };
 
   return (
