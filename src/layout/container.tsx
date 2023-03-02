@@ -2,15 +2,24 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = ({ children }: { children?: React.ReactNode }) => {
-  return <SectionContainer>{children}</SectionContainer>;
+  return (
+    <SectionContainer>
+      <Box>{children}</Box>
+    </SectionContainer>
+  );
 };
 
 export default Container;
 
 const SectionContainer = styled.section`
   position: relative;
-  width: 380px;
-  margin: 0 auto;
-  padding: 20px;
+`;
+
+const Box = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border: 1px solid black;
+  padding: 20px;
 `;

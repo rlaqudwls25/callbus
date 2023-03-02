@@ -1,4 +1,4 @@
-import RentalCategory from "../../components/rentalInfo/RentalCategory";
+import RentalCategory from "../../components/rentalInfo/rentalCategory";
 
 const RentalInfoPage = () => {
   return <RentalCategory />;

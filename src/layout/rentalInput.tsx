@@ -16,7 +16,7 @@ interface Props {
   max: string;
 }
 
-const Input = (props: Props) => {
+const RentalInput = (props: Props) => {
   const { type, onChange, value, id, disabled, unit, name, max, min } = props;
 
   return (
@@ -37,28 +37,26 @@ const Input = (props: Props) => {
   );
 };
 
-export default Input;
+export default RentalInput;
 
 const InputBox = styled.div<{
   disabled: boolean;
 }>`
-  ${mixin.flexSet("space-between", "center")}
+  ${mixin.flexSet("", "center")}
+  ${mixin.marginSet(1, 1, 1, 1)}
   height: 46px;
-  padding: 12px;
-
+  padding: 0px 10px 0px 10px;
   border: 1px solid ${theme.blurrygray};
+  background-color: ${(props) => (props.disabled ? theme.bggray : theme.white)};
 
   label {
-    width: 80px;
+    width: 75px;
     ${mixin.fontSet(theme.blurrygray, "14px", "500")}
-    font-family: "Apple SD Gothic Neo";
   }
-
-  background-color: ${(props) => (props.disabled ? theme.bggray : theme.white)};
 `;
 
 const Inputs = styled.input`
-  width: 30%;
+  width: 45%;
   border: none;
   text-align: right;
 
