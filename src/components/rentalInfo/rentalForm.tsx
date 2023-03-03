@@ -2,20 +2,19 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import RentalInput from "../../layout/rentalInput";
 import { RentalInfo } from "../../mock/data";
-import { useStore } from "../../stores/useStore";
 import { mixin } from "../../styles/mixin";
 import { theme } from "../../styles/theme";
 import { RentalPriceType } from "../../types/inputData";
 import { useNavigate } from "react-router-dom";
+import { rentalRefundState, rentalTypeNameState } from "../recoils/rentalInfo";
+import { RecoilState, useRecoilState } from "recoil";
 
 const RentalForm = () => {
   const [rentalList, setRentalList] = useState<RentalPriceType[]>(RentalInfo);
-  const [saveRentalData, setSaveRentalData] = useState<RentalPriceType[]>([]);
+  const [managePriceCheck, setManagePriceCheck] = useState(false);
+  const [refundPrice, setRefundPrice] = useRecoilState(rentalRefundState);
+  const [rentalTypeName] = useRecoilState(rentalTypeNameState);
   const navigate = useNavigate();
-
-  const { managePriceCheckToggle, managePriceCheck, rentalTypeName } = useStore(
-    (state) => state
-  );
 
   useEffect(() => {
     handelRentalValue();
@@ -26,19 +25,20 @@ const RentalForm = () => {
   }, [managePriceCheck, rentalTypeName]);
 
   const handelRentalValue = () => {
-    setRentalList((prev) => {
-      const charterData = rentalList.filter((item) =>
-        item.rentalTypeCheck.includes("전세")
-      );
+    if (rentalTypeName === "월세")
+      setRentalList((prev) => {
+        const charterData = rentalList.filter((item) =>
+          item.rentalTypeCheck.includes("전세")
+        );
 
-      if (rentalTypeName === "월세") {
-        return RentalInfo;
-      } else if (rentalTypeName === "전세") {
-        return charterData;
-      }
+        if (rentalTypeName === "월세") {
+          return RentalInfo;
+        } else if (rentalTypeName === "전세") {
+          return charterData;
+        }
 
-      return prev;
-    });
+        return prev;
+      });
   };
 
   const handleDisabledData = () => {
@@ -81,8 +81,12 @@ const RentalForm = () => {
     setRentalList(updateData);
   };
 
+  const managePriceCheckToggle = () => {
+    setManagePriceCheck((prev) => !prev);
+  };
+
   const saveRentalInfo = () => {
-    setSaveRentalData(rentalList);
+    setRefundPrice(rentalList);
     navigate("/refund");
   };
 
@@ -147,6 +151,8 @@ const ConfirmBtn = styled.button`
   height: 50px;
   ${mixin.marginSet(0, 0, 11, 0)}
   background-color: ${theme.blue};
+  color: ${theme.white};
+  cursor: pointer;
 `;
 
 const SaveButtonBox = styled.div`
@@ -154,3 +160,6 @@ const SaveButtonBox = styled.div`
     ${mixin.fontSet(theme.gray, "14px", "400")}
   }
 `;
+function useRecoilValue(rentalRefundState: RecoilState<RentalPriceType[]>) {
+  throw new Error("Function not implemented.");
+}

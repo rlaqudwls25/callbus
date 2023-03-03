@@ -3,10 +3,16 @@ import { mixin } from "../../styles/mixin";
 import { theme } from "../../styles/theme";
 import { RentalType } from "../../mock/data";
 import RentalForm from "./rentalForm";
-import { useStore } from "../../stores/useStore";
+import { useRecoilState } from "recoil";
+import { rentalTypeNameState } from "../recoils/rentalInfo";
 
 const RentalCategory = () => {
-  const { handleChangeType, rentalTypeName } = useStore((state) => state);
+  const [rentalTypeName, setRentalTypeName] =
+    useRecoilState(rentalTypeNameState);
+
+  const handleChangeType = (typeName: string) => {
+    setRentalTypeName(typeName);
+  };
 
   return (
     <RentalInfoContainer>
