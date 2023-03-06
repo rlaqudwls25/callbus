@@ -10,7 +10,7 @@ export type RentalPriceType = {
   rentalManageCheck: any;
 };
 
-export type BuldingInfoType = {
+export type BuildingInfoType = {
   id: number;
   type: string;
   value: string | number;

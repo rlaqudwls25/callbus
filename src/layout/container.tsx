@@ -22,5 +22,7 @@ const Box = styled.div`
   width: 500px;
   padding: 20px;
   transform: translate(-50%, -50%);
-  border: 1px solid black;
+  padding: 20px;
+  background: #fdfeff;
+  box-shadow: 0px 9px 15px -3px rgba(0, 0, 0, 0.1);
 `;

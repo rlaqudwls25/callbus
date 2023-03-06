@@ -2,7 +2,7 @@ import Container from "./layout/container";
 import RentalInfoPage from "./pages/rentalInfo";
 import { Route, Routes } from "react-router-dom";
 import ResidencyInfoPage from "./pages/residencyInfo";
-import CompleteRentalPage from "./pages/completeRentalInfo";
+import TotalInfo from "./components/totalInfo/totalInfo";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<RentalInfoPage />} />
         <Route path="/refund" element={<ResidencyInfoPage />} />
-        <Route path="/complete" element={<CompleteRentalPage />} />
+        <Route path="/complete" element={<TotalInfo />} />
       </Routes>
     </Container>
   );

@@ -6,13 +6,13 @@ import BuildingInfoInput from "../../layout/buildingInfoInput";
 import { BuildingInfoData } from "../../mock/data";
 import { mixin } from "../../styles/mixin";
 import { theme } from "../../styles/theme";
-import { BuldingInfoType } from "../../types/inputData";
-import { buldingInfoState } from "../recoils/buildingInfo";
+import { BuildingInfoType } from "../../types/inputData";
+import { buildingInfoState } from "../recoils/buildingInfo";
 
 const BuildingInfomation = () => {
   const [buildingInfoList, setBuildingInfoList] =
-    useState<BuldingInfoType[]>(BuildingInfoData);
-  const [saveBulingInfo, setSaveBulingInfo] = useRecoilState(buldingInfoState);
+    useState<BuildingInfoType[]>(BuildingInfoData);
+  const [saveBulingInfo, setSaveBulingInfo] = useRecoilState(buildingInfoState);
   const navigate = useNavigate();
 
   const handleValue = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,7 +1,7 @@
 import { atom } from "recoil";
-import { BuldingInfoType } from "../../types/inputData";
+import { BuildingInfoType } from "../../types/inputData";
 
-export const buldingInfoState = atom<BuldingInfoType[]>({
-  key: "buldingInfoState",
+export const buildingInfoState = atom<BuildingInfoType[]>({
+  key: "buildingInfoState",
   default: [],
 });
