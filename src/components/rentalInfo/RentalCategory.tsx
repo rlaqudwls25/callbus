@@ -59,7 +59,7 @@ const RentalCategory = () => {
 
 export default RentalCategory;
 
-const RentalInfoContainer = styled.div``;
+const RentalInfoContainer = styled.section``;
 
 const RantalSubTitleBox = styled.div`
   span {

@@ -7,14 +7,18 @@ import { theme } from "../../styles/theme";
 import { RentalPriceType } from "../../types/inputData";
 import { useNavigate } from "react-router-dom";
 import { rentalRefundState, rentalTypeNameState } from "../recoils/rentalInfo";
-import { RecoilState, useRecoilState } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 
 const RentalForm = () => {
   const [rentalList, setRentalList] = useState<RentalPriceType[]>(RentalInfo);
   const [managePriceCheck, setManagePriceCheck] = useState(false);
   const [refundPrice, setRefundPrice] = useRecoilState(rentalRefundState);
-  const [rentalTypeName] = useRecoilState(rentalTypeNameState);
+  const rentalTypeName = useRecoilValue(rentalTypeNameState);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(refundPrice));
+  }, [refundPrice]);
 
   useEffect(() => {
     handelRentalValue();
@@ -23,6 +27,10 @@ const RentalForm = () => {
   useEffect(() => {
     handleDisabledData();
   }, [managePriceCheck, rentalTypeName]);
+
+  useEffect(() => {
+    getLocalStorage();
+  }, []);
 
   const handelRentalValue = () => {
     if (rentalTypeName === "월세")
@@ -83,6 +91,14 @@ const RentalForm = () => {
 
   const managePriceCheckToggle = () => {
     setManagePriceCheck((prev) => !prev);
+  };
+
+  const getLocalStorage = () => {
+    if (!refundPrice.length) {
+      return;
+    }
+    const getList = JSON.parse(localStorage.getItem("list") as string);
+    setRentalList(getList);
   };
 
   const saveRentalInfo = () => {
@@ -160,6 +176,3 @@ const SaveButtonBox = styled.div`
     ${mixin.fontSet(theme.gray, "14px", "400")}
   }
 `;
-function useRecoilValue(rentalRefundState: RecoilState<RentalPriceType[]>) {
-  throw new Error("Function not implemented.");
-}

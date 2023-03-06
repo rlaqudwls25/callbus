@@ -19,7 +19,8 @@ const Box = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
+  width: 500px;
+  padding: 20px;
   transform: translate(-50%, -50%);
   border: 1px solid black;
-  padding: 20px;
 `;

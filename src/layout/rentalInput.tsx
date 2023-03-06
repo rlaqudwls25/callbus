@@ -5,7 +5,6 @@ import { theme } from "../styles/theme";
 interface Props {
   value: string | number;
   type: string;
-  children?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   id?: any;

@@ -170,5 +170,7 @@ button {
   outline: none;
   border: none;
   border-radius: 10px;
+  background-color: white;
+  cursor: pointer;
 }
 `;
