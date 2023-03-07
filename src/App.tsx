@@ -2,7 +2,7 @@ import Container from "./layout/container";
 import RentalInfoPage from "./pages/rentalInfo";
 import { Route, Routes } from "react-router-dom";
 import ResidencyInfoPage from "./pages/residencyInfo";
-import TotalInfo from "./components/totalInfo/totalInfo";
+import TotalInfo from "./components/totalInfo/totalList";
 
 function App() {
   return (

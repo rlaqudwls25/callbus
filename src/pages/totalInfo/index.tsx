@@ -1,7 +1,7 @@
-import TotalInfo from "../../components/totalInfo/totalInfo";
+import TotalList from "../../components/totalInfo/totalList";
 
 const TotalInfoPage = () => {
-  return <TotalInfo />;
+  return <TotalList />;
 };
 
 export default TotalInfoPage;

@@ -5,7 +5,7 @@ import { rentalRefundState } from "../recoils/rentalInfo";
 import BuildingList from "./buildingList";
 import RentalList from "./rentalList";
 
-const TotalInfo = () => {
+const TotalList = () => {
   const buildingData = useRecoilValue(buildingInfoState);
   const rentalData = useRecoilValue(rentalRefundState);
 
@@ -14,17 +14,17 @@ const TotalInfo = () => {
   );
 
   return (
-    <TotalInfoContainer>
+    <TotalListContainer>
       {buildingFilterData.map((item) => (
         <BuildingList {...item} />
       ))}
       {rentalData.map((item) => (
         <RentalList {...item} />
       ))}
-    </TotalInfoContainer>
+    </TotalListContainer>
   );
 };
 
-export default TotalInfo;
+export default TotalList;
 
-const TotalInfoContainer = styled.section``;
+const TotalListContainer = styled.section``;
