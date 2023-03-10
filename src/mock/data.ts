@@ -8,7 +8,7 @@ export const RentalInfo = [
     id: 1,
     type: "text",
     placeholder: "보증금",
-    value: "",
+    value: "0",
     unit: "만원",
     name: "보증금",
     min: "",
@@ -20,7 +20,7 @@ export const RentalInfo = [
     id: 2,
     type: "text",
     placeholder: "월 임대료",
-    value: "",
+    value: "0",
     unit: "만원",
     name: "월 임대료",
     min: "",
@@ -32,7 +32,7 @@ export const RentalInfo = [
     id: 3,
     type: "text",
     placeholder: "월 관리비",
-    value: "",
+    value: "0",
     unit: "만원",
     name: "월 관리비",
     min: "",
@@ -61,6 +61,7 @@ export const BuildingInfoData = [
     placeholder: "살고 계신 건물주소 또는 건물명을 입력하세요.",
     value: "",
     name: "거주 건물",
+    show: true,
   },
   {
     id: 2,
@@ -68,6 +69,7 @@ export const BuildingInfoData = [
     placeholder: "호실",
     value: "",
     name: "호실",
+    show: false,
   },
   {
     id: 3,
@@ -75,6 +77,7 @@ export const BuildingInfoData = [
     placeholder: "세입자 이름",
     value: "",
     name: "세입자(본인) 이름",
+    show: false,
   },
   {
     id: 4,
@@ -82,6 +85,7 @@ export const BuildingInfoData = [
     placeholder: "계약시작일",
     value: "",
     name: "계약시작일",
+    show: true,
   },
   {
     id: 5,
@@ -89,6 +93,7 @@ export const BuildingInfoData = [
     placeholder: "계약종료일",
     value: "",
     name: "계약종료일",
+    show: true,
   },
   {
     id: 6,
@@ -96,5 +101,6 @@ export const BuildingInfoData = [
     placeholder: "임대인(현재 집주인) 휴대폰 번호를 입력해주세요.",
     value: "",
     name: "임대인 휴대폰 번호",
+    show: false,
   },
 ];

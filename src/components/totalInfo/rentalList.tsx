@@ -6,10 +6,12 @@ import { RentalPriceType } from "../../types/inputData";
 const RentalList = ({ name, value, unit }: RentalPriceType) => {
   return (
     <RetalListBox>
-      <div>
-        <span>{name} : </span>
+      <RentalName>
+        <RentalText>{name}</RentalText>
+      </RentalName>
+      <RentalName>
         <strong>{value}</strong> {unit}
-      </div>
+      </RentalName>
     </RetalListBox>
   );
 };
@@ -17,14 +19,18 @@ const RentalList = ({ name, value, unit }: RentalPriceType) => {
 export default RentalList;
 
 const RetalListBox = styled.div`
-  ${mixin.flexSet("", "center")}
+  display: flex;
   ${mixin.marginSet(6, 0, 0, 0)}
-
-    span {
-    ${mixin.fontSet(theme.gray, "14px", "700")}
-  }
 
   strong {
     ${mixin.fontSet(theme.black, "16px", "700")}
   }
+`;
+
+const RentalText = styled.span`
+  ${mixin.fontSet(theme.blurrygray, "16px", "700")}
+`;
+
+const RentalName = styled.div`
+  width: 50%;
 `;

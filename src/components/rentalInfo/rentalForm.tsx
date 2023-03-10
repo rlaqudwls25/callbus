@@ -34,18 +34,16 @@ const RentalForm = () => {
 
   const handelRentalValue = () => {
     if (rentalTypeName === "월세")
-      setRentalList((prev) => {
+      setRentalList(() => {
         const charterData = rentalList.filter((item) =>
           item.rentalTypeCheck.includes("전세")
         );
 
         if (rentalTypeName === "월세") {
           return RentalInfo;
-        } else if (rentalTypeName === "전세") {
+        } else {
           return charterData;
         }
-
-        return prev;
       });
   };
 
@@ -67,14 +65,19 @@ const RentalForm = () => {
       )
       .filter((item) => item.rentalTypeCheck.includes("전세"));
 
-    // 이걸 어떻게 고치냐..
     if (rentalTypeName === "월세" && managePriceCheck) {
       setRentalList(monthlyDisabledData);
-    } else if (rentalTypeName === "월세" && !managePriceCheck) {
+    }
+
+    if (rentalTypeName === "월세" && !managePriceCheck) {
       setRentalList(RentalInfo);
-    } else if (rentalTypeName === "전세" && managePriceCheck) {
+    }
+
+    if (rentalTypeName === "전세" && managePriceCheck) {
       setRentalList(chaterDisalbedData);
-    } else if (rentalTypeName === "전세" && !managePriceCheck) {
+    }
+
+    if (rentalTypeName === "전세" && !managePriceCheck) {
       setRentalList(charterData);
     }
   };

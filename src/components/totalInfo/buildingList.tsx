@@ -3,35 +3,36 @@ import { mixin } from "../../styles/mixin";
 import { theme } from "../../styles/theme";
 import { BuildingInfoType } from "../../types/inputData";
 
-const BuildingList = ({ value, name }: BuildingInfoType) => {
+const BuildingList = ({ id, value }: BuildingInfoType) => {
+  const rensidencyData = id === 1 && value;
+
   return (
-    <BuildingBox>
-      <div>
-        <span>{name} : </span>
-        <strong>{value}</strong>
-      </div>
-    </BuildingBox>
+    <BuildingListBox itemId={id}>
+      <BuildingWrapper>
+        <ResidencyText itemId={id}>{rensidencyData}</ResidencyText>
+      </BuildingWrapper>
+    </BuildingListBox>
   );
 };
 
 export default BuildingList;
 
-const BuildingBox = styled.div`
+const BuildingListBox = styled.div<{ itemId: number }>`
   ${mixin.flexSet("", "center")}
   ${mixin.marginSet(6, 0, 0, 0)}
-  span {
-    ${mixin.fontSet(theme.gray, "14px", "700")}
-  }
 
-  strong {
-    ${mixin.fontSet(theme.black, "16px", "700")}
+  div {
+    text-align: ${(props) => (props.itemId === 1 ? "center" : "")};
   }
 `;
 
-// const Adress = styled.div``;
+const BuildingWrapper = styled.div`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
 
-// const DateBox = styled.div``;
-
-// const StartDate = styled.div``;
-
-// const EndDate = styled(StartDate)``;
+const ResidencyText = styled.span<{ itemId: number }>`
+  font-size: ${(props) => (props.itemId === 1 ? "24px" : "16px")};
+  ${mixin.marginSet(0, 0, 0, 8)}
+`;

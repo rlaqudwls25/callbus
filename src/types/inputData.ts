@@ -16,4 +16,5 @@ export type BuildingInfoType = {
   value: string | number;
   name: string;
   placeholder: string;
+  show: boolean;
 };
