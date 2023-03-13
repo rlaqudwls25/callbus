@@ -33,18 +33,17 @@ const RentalForm = () => {
   }, []);
 
   const handelRentalValue = () => {
-    if (rentalTypeName === "월세")
-      setRentalList(() => {
-        const charterData = rentalList.filter((item) =>
-          item.rentalTypeCheck.includes("전세")
-        );
+    setRentalList(() => {
+      const charterData = rentalList.filter((item) =>
+        item.rentalTypeCheck.includes("전세")
+      );
 
-        if (rentalTypeName === "월세") {
-          return RentalInfo;
-        } else {
-          return charterData;
-        }
-      });
+      if (rentalTypeName === "월세") {
+        return RentalInfo;
+      } else {
+        return charterData;
+      }
+    });
   };
 
   const handleDisabledData = () => {
@@ -53,33 +52,37 @@ const RentalForm = () => {
     );
     // 월세 disabled
     const monthlyDisabledData = RentalInfo.map((item) =>
-      item.name === "월 관리비" ? { ...item, value: "0" } : item
+      item.name === "월 관리비" ? { ...item, value: "" } : item
     );
 
     // 전세 disabled
     const chaterDisalbedData = rentalList
       .map((item) =>
         item.name === "임대료 납부일" || item.name === "월 관리비"
-          ? { ...item, value: "0" }
+          ? { ...item, value: "" }
           : item
       )
       .filter((item) => item.rentalTypeCheck.includes("전세"));
 
-    if (rentalTypeName === "월세" && managePriceCheck) {
-      setRentalList(monthlyDisabledData);
-    }
+    setRentalList((prev) => {
+      if (rentalTypeName === "월세") {
+        if (managePriceCheck) {
+          return monthlyDisabledData;
+        } else {
+          return RentalInfo;
+        }
+      }
 
-    if (rentalTypeName === "월세" && !managePriceCheck) {
-      setRentalList(RentalInfo);
-    }
+      if (rentalTypeName === "전세") {
+        if (managePriceCheck) {
+          return chaterDisalbedData;
+        } else {
+          return charterData;
+        }
+      }
 
-    if (rentalTypeName === "전세" && managePriceCheck) {
-      setRentalList(chaterDisalbedData);
-    }
-
-    if (rentalTypeName === "전세" && !managePriceCheck) {
-      setRentalList(charterData);
-    }
+      return prev;
+    });
   };
 
   const handleRentalInfo = (e: React.ChangeEvent<HTMLInputElement>) => {
